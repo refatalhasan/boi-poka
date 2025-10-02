@@ -14,6 +14,8 @@ This project showcases features like book listings, read books, and detailed boo
 
 ---
 
+## ⚠️ This project is not Responsive 
+
 ## 🌐 Live
 
 [Click here to see the live website](https://boipokaaa.netlify.app/)  
