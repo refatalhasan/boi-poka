@@ -19,9 +19,3 @@ This project showcases features like book listings, read books, and detailed boo
 [Click here to see the live website](https://boipokaaa.netlify.app/)  
 
 ---
-
-## 🔗 Clone this repo
-
-```
-git clone https://github.com/your-username/Boipoka.git
-```
