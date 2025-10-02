@@ -7,7 +7,7 @@ const Root = () => {
     return (
         <div className="flex flex-col min-h-screen text-[#3a3a3a] bg-[#fcfcfc]">
             <NavBar />
-            <div className="flex-grow min-h-screen">
+            <div className="flex-grow bg-[#fcfcfc]">
                 <Outlet />
             </div>
             <Footer />

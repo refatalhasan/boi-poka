@@ -5,7 +5,7 @@ const Footer = () => {
 
 
     return (
-        <div className='flex w-full h-fit items-center justify-center'>
+        <div className='flex mt-30 w-full h-fit items-center justify-center'>
             <footer className="w-[100%] flex flex-row items-start justify-around footer sm:footer-horizontal bg-base-200 text-base-content p-10">
                 <nav>
                     <h6 className="footer-title">Company</h6>
