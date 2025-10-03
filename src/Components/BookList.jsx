@@ -15,13 +15,9 @@ const BookList = ({ book }) => {
         bookId,
         author,
         image,
-        review,
-        totalPages,
         rating,
         category,
         tags,
-        publisher,
-        yearOfPublishing,
     } = book;
 
     const [loaded, setLoaded] = useState(false);
