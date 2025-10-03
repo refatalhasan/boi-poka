@@ -7,9 +7,10 @@ import {
 } from "react-router-dom"; 
 import Root from './Components/Root';
 import ErrorPage from './Components/ErrorPage';
-import DashBoard from './Components/DashBoard';
+import Bookmarks from './Components/Bookmarks';
 import Home from './Components/Home';
 import BookDetail from './Components/BookDetail';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const router = createBrowserRouter([
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home></Home>
       },
       {
         path: 'books/:bookId',
@@ -29,8 +30,9 @@ const router = createBrowserRouter([
 
       },
       {
-        path: "/dashboard",
-        element: <DashBoard />
+        path: "/bookmarks",
+        element: <Bookmarks></Bookmarks>,
+        loader: () => fetch('/booksData.json'),
       },
       {
         path: "/pages",

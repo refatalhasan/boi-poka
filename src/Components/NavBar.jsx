@@ -20,8 +20,8 @@ const NavBar = () => {
                 <NavLink to="/" className={linkClasses}>
                     Home
                 </NavLink>
-                <NavLink to="/dashboard" className={linkClasses}>
-                    Book Lists
+                <NavLink to="/bookmarks" className={linkClasses}>
+                    Bookmarks
                 </NavLink>
                 <NavLink to="/pages" className={linkClasses}>
                     Pages to read
