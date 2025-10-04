@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { FaRegStar } from "react-icons/fa6";
 import { IoWarningOutline } from "react-icons/io5";
-import { useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { addToStoredReadList, addToStoredWishList } from '../Tools/addToDB';
 
 const BookDetail = () => {
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -15,11 +15,14 @@ const BookDetail = () => {
     const id = parseInt(bookId);
 
     const data = useLoaderData();
-
     const book = data.find(book => book.bookId === id);
 
     if (!book) {
-        return <p className="flex items-end gap-2 text-[#ff4d4d] p-6 text-3xl"><IoWarningOutline /> Book not found</p>;
+        return (
+            <p className="flex items-end gap-2 text-[#ff4d4d] p-6 text-3xl">
+                <IoWarningOutline /> Book not found
+            </p>
+        );
     }
 
     const {
@@ -36,11 +39,41 @@ const BookDetail = () => {
     } = book;
 
     const handleMarkAsRead = (id) => {
-        addToStoredReadList(id);
+        const added = addToStoredReadList(id);
+        if (added) {
+            toast.success("Book added to Read List", {
+                position: "top-right",
+                autoClose: 2000,
+                className: "bg-[#00a5ce] text-white font-medium rounded-lg shadow-md",
+                progressClassName: "bg-white",
+            });
+        } else {
+            toast.warn("Already in Read List", {
+                position: "top-right",
+                autoClose: 2000,
+                className: "bg-[#007a96] text-white font-medium rounded-lg shadow-md",
+                progressClassName: "bg-white",
+            });
+        }
     };
 
     const handleAddToWishlist = (id) => {
-        addToStoredWishList(id);
+        const added = addToStoredWishList(id);
+        if (added) {
+            toast.success("Book added to Wishlist", {
+                position: "top-right",
+                autoClose: 2000,
+                className: "bg-[#00b600] text-white font-medium rounded-lg shadow-md",
+                progressClassName: "bg-white",
+            });
+        } else {
+            toast.warn("Already in Wishlist", {
+                position: "top-right",
+                autoClose: 2000,
+                className: "bg-[#007a00] text-white font-medium rounded-lg shadow-md",
+                progressClassName: "bg-white",
+            });
+        }
     };
 
     return (
@@ -90,33 +123,24 @@ const BookDetail = () => {
                         </p>
                     </div>
                     <div className='w-full flex gap-3 mt-4'>
-                        <button onClick={() => handleMarkAsRead(bookId)} className="
-            block text-center
-            border-2 bg-[#00a5ce] border-[#00a5ce] 
-            rounded-lg  px-6 py-2 
-            text-[#ffffff] font-medium
-            transition-all duration-300 
-            hover:bg-[#ffffff00] hover:text-[#00a5ce]
-            hover:shadow-lg 
-            active:scale-95
-            cursor-pointer
-          " >Mark as Read</button>
+                        <button
+                            onClick={() => handleMarkAsRead(bookId)}
+                            className="block text-center border-2 bg-[#00a5ce] border-[#00a5ce] rounded-lg  px-6 py-2 text-[#ffffff] font-medium transition-all duration-300 hover:bg-[#ffffff00] hover:text-[#00a5ce] hover:shadow-lg active:scale-95 cursor-pointer"
+                        >
+                            Mark as Read
+                        </button>
 
-                        <button onClick={() => handleAddToWishlist(bookId)} className="
-            block text-center
-            border-2 border-[#00b600] 
-            rounded-lg px-6 py-2 
-            text-[#00b600] font-medium
-            transition-all duration-300 
-            hover:bg-[#00b600] hover:text-white 
-            hover:shadow-lg 
-            active:scale-95
-            cursor-pointer
-          ">Add to Wishlist</button>
-
+                        <button
+                            onClick={() => handleAddToWishlist(bookId)}
+                            className="block text-center border-2 border-[#00b600] rounded-lg px-6 py-2 text-[#00b600] font-medium transition-all duration-300 hover:bg-[#00b600] hover:text-white hover:shadow-lg active:scale-95 cursor-pointer"
+                        >
+                            Add to Wishlist
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <ToastContainer />
         </div>
     );
 };

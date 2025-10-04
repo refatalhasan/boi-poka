@@ -10,7 +10,6 @@ import ErrorPage from './Components/ErrorPage';
 import Bookmarks from './Components/Bookmarks';
 import Home from './Components/Home';
 import BookDetail from './Components/BookDetail';
-import { ToastContainer, toast } from 'react-toastify';
 
 
 const router = createBrowserRouter([
@@ -34,14 +33,9 @@ const router = createBrowserRouter([
         element: <Bookmarks></Bookmarks>,
         loader: () => fetch('/booksData.json'),
       },
-      {
-        path: "/pages",
-        element: <h2>Pages to Read Coming Soon...</h2> // or create a component
-      }
     ]
   },
 ]);
-
 
 
 createRoot(document.getElementById('root')).render(

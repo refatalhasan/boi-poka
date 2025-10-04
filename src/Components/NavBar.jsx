@@ -7,7 +7,7 @@ const NavBar = () => {
     const linkClasses = ({ isActive }) =>
         `px-6 flex flex-col items-center justify-center font-semibold transition-colors duration-300 relative
   ${isActive
-            ? "text-[#5754E8] after:content-[''] after:block after:h-[2px] after:w-full after:bg-[currentColor]" // active link style
+            ? "text-[#5754E8] after:content-[''] after:block after:h-[2px] after:w-full after:bg-[currentColor]"
             : "text-gray-500 hover:text-[#5754E8] after:content-[''] after:block after:h-[2px] after:w-0 after:bg-[currentColor] after:transition-all after:duration-300 hover:after:w-full"
         }`;
 
